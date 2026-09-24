@@ -2,6 +2,8 @@
 <h1>TikTok authorisation</h1><p id="msg">Reading the response…</p><p><code id="code"></code></p>
 <script>
 const p=new URLSearchParams(location.search),m=document.getElementById('msg'),c=document.getElementById('code');
+// A login started from the local Mind Wired studio hands the code straight back to it.
+if((p.get('state')||'').startsWith('local-')){location.replace('http://localhost:4567/callback'+location.search);}
 if(p.get('code')){m.textContent='Authorised. The publishing tool picks up this code automatically; if it asks, paste it:';c.textContent=p.get('code');}
 else if(p.get('error')){m.textContent='TikTok returned an error: '+p.get('error')+' '+(p.get('error_description')||'');}
 else{m.textContent='This page receives the TikTok authorisation response for the Mind Wired publishing tool.';c.remove();}
