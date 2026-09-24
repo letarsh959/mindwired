@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mind Wired Connected</title><link rel="stylesheet" href="style.css"></head><body>
+<h1>TikTok authorisation</h1><p id="msg">Reading the response…</p><p><code id="code"></code></p>
+<script>
+const p=new URLSearchParams(location.search),m=document.getElementById('msg'),c=document.getElementById('code');
+if(p.get('code')){m.textContent='Authorised. The publishing tool picks up this code automatically; if it asks, paste it:';c.textContent=p.get('code');}
+else if(p.get('error')){m.textContent='TikTok returned an error: '+p.get('error')+' '+(p.get('error_description')||'');}
+else{m.textContent='This page receives the TikTok authorisation response for the Mind Wired publishing tool.';c.remove();}
+</script></body></html>
